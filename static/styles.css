@@ -1,4 +1,206 @@
+/* 1. Variables & Reset: Keep colors consistent */
+:root {
+  --bg-color: #ffffff;
+  --text-main: #111111;
+  --text-muted: #666666;
+  --accent: #000000;
+  --code-bg: #e8e8e8; /* Light grey for code */
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: sans-serif;
-    padding: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased; /* Makes fonts look sharper on Mac */
+}
+
+/* 2. Navigation: Mono & Clean */
+.topnav {
+  padding: 20px 40px;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.topnav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  margin-left: 20px;
+  transition: color 0.2s ease;
+}
+
+.topnav a:hover, 
+.topnav a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* 3. Site Header (The "Hero" Section) */
+header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+header h1 {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  letter-spacing: -2px; /* Tighter tracking looks more modern */
+  margin-bottom: 10px;
+}
+
+header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* 4. The Divider */
+hr {
+  border: 0;
+  border-top: 1px solid #eaeaea;
+  margin-bottom: 60px;
+}
+
+/* 5. The Content Layout */
+.content {
+  width: 100%;
+  max-width: 780px; /* Golden ratio for reading width */
+  margin: 0 auto;
+  padding: 0 20px 100px; /* Bottom padding for scroll space */
+}
+
+/* 6. Post Typography */
+.post h1 {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.post h2 {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--text-main); /* Thick underline for sections */
+}
+
+.post p {
+  margin-bottom: 24px;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.post ul,
+.post ol{
+  margin-bottom: 24px;
+  padding-left: 30px;
+}
+
+.post li {
+  margin-bottom: 8px;
+  padding-left: 5px;
+}
+
+.post ol li::marker {
+  font-family: var (--font-mono);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* 7. Code Blocks: The "Cool" Factor */
+.post pre {
+  position: relative;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 30px 0;
+  font-size: 0.9rem;
+  border: 1px solid #333;
+}
+
+.post code {
+  font-family: var(--font-mono);
+}
+
+/* Inline code (like `flag`) */
+.post p code, 
+.post li code {
+  background-color: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #d63384; /* A subtle pink/red for inline code highlights */
+}
+
+/* --- NEW COPY BUTTON STYLES --- */
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  
+  background: rgba(255, 255, 255, 0.1); /* Glassy background */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff; /* White text because your code theme is dark (Dracula) */
+  
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0; /* Hidden by default */
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+/* Show button when hovering over the code block */
+.post pre:hover .copy-btn {
+  opacity: 1;
+}
+
+/* Active state (when clicked) */
+.copy-btn:active {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(1px);
+}
+
+#btn {
+  display: block;
+  margin: 60px auto 0;
+  background: transparent;
+  color: var(--text-main);
+  border: none;
+  border-bottom: 2px solid transparent; /* Invisible border to prevent jumping */
+  padding: 10px 20px;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Adds a prompt symbol before the text */
+#btn::before {
+  content: "> ";
+  color: #d63384; /* Pink accent */
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#btn:hover {
+  border-bottom: 2px solid var(--text-main);
+  letter-spacing: 1px; /* Spreads text out slightly */
+}
+
+#btn:hover::before {
+  opacity: 1;
 }

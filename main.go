@@ -1,17 +1,50 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
-	"text/template"
+	"os"
+
+	"github.com/yuin/goldmark"
+	highlighting "github.com/yuin/goldmark-highlighting/v2"
 )
 
 var tpl = template.Must(template.ParseGlob("templates/*.html"))
 
+type ArticleData struct {
+	ArticleContent template.HTML
+}
+
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	if err := tpl.Execute(w, "home.html"); err != nil {
-		fmt.Println(err)
+
+	mdContent, err := os.ReadFile("./static/posts/go_projects_to_try_out.md")
+	if err != nil {
+		http.Error(w, "Could not load article", http.StatusInternalServerError)
+		fmt.Printf("Error reading file: %v", err)
+		return
+	}
+
+	md := goldmark.New(
+		goldmark.WithExtensions(
+			highlighting.NewHighlighting(
+				highlighting.WithStyle("dracula"))))
+
+	var buf bytes.Buffer
+	if err := md.Convert(mdContent, &buf); err != nil {
+		http.Error(w, "Could not parse markdown", http.StatusInternalServerError)
+		fmt.Printf("Error parsing markdown: %v", err)
+		return
+	}
+
+	data := ArticleData{
+		ArticleContent: template.HTML(buf.String()),
+	}
+
+	if err := tpl.ExecuteTemplate(w, "home.html", data); err != nil {
+		fmt.Printf("Could not execute home template: %v\n", err)
 	}
 }
 
