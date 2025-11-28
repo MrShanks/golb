@@ -6,7 +6,7 @@ for a job, they make a great addition to your application and can
 genuinely help you **stand out**.
 
 I've put together a curated list of **five projects** that should
-be fun to build and challenging enough to help you level up—without
+be fun to build and challenging enough to help you level up without
 being frustratingly hard.
 
 Before you begin, here are a few **recommendations** to set you up for success:
