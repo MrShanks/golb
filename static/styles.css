@@ -62,7 +62,7 @@ header p {
   font-size: 1.1rem;
 }
 
-/* 4. The Divider */
+/* 4. The Divider*/ 
 hr {
   border: 0;
   border-top: 1px solid #eaeaea;
@@ -80,7 +80,7 @@ hr {
 /* 6. Post Typography */
 .post h1 {
   font-family: var(--font-mono);
-  font-size: 2.2rem;
+  font-size: 2.0rem;
   letter-spacing: -1px;
   margin-bottom: 20px;
   line-height: 1.2;
@@ -92,7 +92,6 @@ hr {
   margin-top: 40px;
   margin-bottom: 15px;
   padding-bottom: 10px;
-  border-bottom: 2px solid var(--text-main); /* Thick underline for sections */
 }
 
 .post p {

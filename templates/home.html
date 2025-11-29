@@ -1,42 +1,43 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Go Nuts blog</title>
 
-    <!-- fonts links -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <title>Go Nuts blog</title>
 
-    <link rel="stylesheet" href="/static/styles.css" />
-  </head>
+  <!-- fonts links -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600&display=swap"
+    rel="stylesheet" />
 
-  <body>
-    <div class="topnav">
-      <a href="#home">HOME</a>
-      <a href="#blog">BLOG</a>
-      <a href="#contacts">CONTACTS</a>
-    </div>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
 
-    <header>
-      <h1>GO NUTS!</h1>
+<body>
+  <div class="topnav">
+    <a href="#home">HOME</a>
+    <a href="#blog">BLOG</a>
+    <a href="#contacts">CONTACTS</a>
+  </div>
 
-      <p>
-        Welcome to go nuts, hope you can find something interesting to read
-        today. No AI BS guaranteed!
-      </p>
-    </header>
+  <header>
+    <h1>GO NUTS!</h1>
 
-    <hr />
-    <div class="content">
-      <div class="post">{{ .ArticleContent }}</div>
+    <p>
+      Welcome to go nuts, hope you can find something interesting to read
+      today. No AI BS guaranteed!
+    </p>
+  </header>
 
-      <button id="btn">Explore</button>
-    </div>
-    <script src="/static/app.js"></script>
-  </body>
+  <hr />
+  <div class="content">
+    <div class="post">{{ .ArticleContent }}</div>
+
+    <button id="btn">Next</button>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+
 </html>
