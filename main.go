@@ -16,15 +16,23 @@ var tpl = template.Must(template.ParseGlob("templates/*.html"))
 
 type ArticleData struct {
 	ArticleContent template.HTML
+	Date           string
 }
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
-	mdContent, err := os.ReadFile("./static/posts/go_projects_to_try_out.md")
+	fileName := "./static/posts/go_projects_to_try_out.md"
+
+	mdContent, err := os.ReadFile(fileName)
 	if err != nil {
 		http.Error(w, "Could not load article", http.StatusInternalServerError)
 		fmt.Printf("Error reading file: %v", err)
 		return
+	}
+
+	fileInfo, err := os.Stat(fileName)
+	if err != nil {
+		fmt.Printf("Error reading file's stats: %v", err)
 	}
 
 	md := goldmark.New(
@@ -41,6 +49,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
 	data := ArticleData{
 		ArticleContent: template.HTML(buf.String()),
+		Date:           fileInfo.ModTime().Format("2006-01-02 15:04:05"),
 	}
 
 	if err := tpl.ExecuteTemplate(w, "home.html", data); err != nil {

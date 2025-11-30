@@ -62,6 +62,12 @@ header p {
   font-size: 1.1rem;
 }
 
+.date {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
 /* 4. The Divider*/ 
 hr {
   border: 0;
