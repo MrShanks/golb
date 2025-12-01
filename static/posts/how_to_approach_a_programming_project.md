@@ -1,4 +1,4 @@
-# **How to approach a programming project**
+# **HOW TO APPROACH A PROGRAMMING PROJECT**
 
 ## Crappy code is better than AI code
 
@@ -62,7 +62,7 @@ Then change things **one step at a time**.
 Tackle one task, and cross it off the list when you are done with it.
 Pat yourself on the back, get an ice cream, rinse and repeat.
 
-## **3. DO *NOT* use AI assistance**
+## **3. DO NOT use AI assistance**
 
 No coding agents, no chat based helpers, no autocomplete.
 

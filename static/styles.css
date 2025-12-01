@@ -66,13 +66,14 @@ header p {
   color: var(--text-muted);
   font-size: 1.1rem;
   font-weight: 600;
+  padding: 0px 0px 20px;
 }
 
 /* 4. The Divider*/ 
 hr {
   border: 0;
   border-top: 1px solid #eaeaea;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 /* 5. The Content Layout */
@@ -95,12 +96,14 @@ hr {
 .post h2 {
   font-family: var(--font-mono);
   font-size: 1.5rem;
-  margin-top: 40px;
+  margin-top: 10px;
   margin-bottom: 15px;
   padding-bottom: 10px;
+  color: #222;
 }
 
 .post p {
+  font-family: var(--font-mono);
   margin-bottom: 24px;
   font-size: 1.0rem;
   color: #333;
@@ -110,11 +113,13 @@ hr {
 .post ol{
   margin-bottom: 24px;
   padding-left: 30px;
+  font-family: var (--font-mono);
 }
 
 .post li {
   margin-bottom: 8px;
   padding-left: 5px;
+  font-family: var (--font-mono);
 }
 
 .post ol li::marker {
@@ -211,13 +216,9 @@ hr {
 }
 
 .post-table {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-mono);
   border-collapse: collapse;
   width: 100%;
-}
-
-.post-table td {
-  padding: 0px 5px 5px 5px; /* spacing between cells */
 }
 
 .post-table a {

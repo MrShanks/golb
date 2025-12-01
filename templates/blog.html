@@ -37,7 +37,6 @@
       {{ range $index, $post := . }}
       <tr>
         <td class="index">{{ printf "%03d" $index }}:</td>
-        <td class="date">{{ $post.Date }}</td>
         <td class="title"><a href="#{{ $post.Name }}">{{ $post.Name }}</a></td>
       </tr>
       {{ end }}

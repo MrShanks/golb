@@ -124,6 +124,9 @@ func main() {
 
 	http.HandleFunc("/", HomeHandler)
 	http.HandleFunc("/blog", BlogHanlder)
+	http.HandleFunc("/.well-known/appspecific/com.chrome.devtools.json", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusNoContent)
+	})
 
 	log.Println("Server running on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
