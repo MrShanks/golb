@@ -31,15 +31,15 @@ body {
   font-size: 0.9rem;
 }
 
-.topnav a {
+a {
   text-decoration: none;
   color: var(--text-muted);
   margin-left: 20px;
   transition: color 0.2s ease;
 }
 
-.topnav a:hover, 
-.topnav a.active {
+a:hover, 
+a.active {
   color: var(--accent);
   font-weight: 600;
 }
@@ -208,4 +208,18 @@ hr {
 
 #btn:hover::before {
   opacity: 1;
+}
+
+.post-table {
+  font-family: 'IBM Plex Mono', monospace;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.post-table td {
+  padding: 0px 5px 5px 5px; /* spacing between cells */
+}
+
+.post-table a {
+  margin-left: 0px;
 }

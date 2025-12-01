@@ -33,10 +33,15 @@
 
   <hr />
   <div class="content">
-    <p class="date">{{ .Date }}</p>
-    <div class="post">{{ .ArticleContent }}</div>
-
-    <button id="btn">Next</button>
+    <table class="post-table">
+      {{ range $index, $post := . }}
+      <tr>
+        <td class="index">{{ printf "%03d" $index }}:</td>
+        <td class="date">{{ $post.Date }}</td>
+        <td class="title"><a href="#{{ $post.Name }}">{{ $post.Name }}</a></td>
+      </tr>
+      {{ end }}
+    </table>
   </div>
   <script src="/static/app.js"></script>
 </body>
