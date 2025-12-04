@@ -12,7 +12,7 @@ import (
 
 var homePageArticle = "./static/posts/how_to_approach_a_programming_project.md"
 var tpl = template.Must(template.ParseGlob("templates/*.html"))
-var posts = []Post{}
+var posts = make(map[string]Post)
 var md = goldmark.New(
 	goldmark.WithExtensions(
 		highlighting.NewHighlighting(
@@ -26,6 +26,7 @@ func main() {
 
 	http.HandleFunc("/", HomeHandler)
 	http.HandleFunc("/blog", BlogHanlder)
+	http.HandleFunc("/post/{slug}", PostHandler)
 
 	srv := &http.Server{
 		Addr:         ":8080",

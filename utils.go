@@ -1,6 +1,9 @@
 package main
 
 import (
+	"bytes"
+	"fmt"
+	"html/template"
 	"log"
 	"os"
 	"strings"
@@ -20,7 +23,19 @@ func loadPosts() {
 			return
 		}
 
-		posts = append(posts, Post{polishName(file.Name()), fi.ModTime().Format("2006-01-02 15:04:05")})
+		mdContent, err := os.ReadFile(fmt.Sprintf("./static/posts/%s", fi.Name()))
+		if err != nil {
+			log.Printf("Could not load article: %v", err)
+			return
+		}
+
+		var buf bytes.Buffer
+		if err := md.Convert(mdContent, &buf); err != nil {
+			log.Printf("Could not parse markdown: %v", err)
+			return
+		}
+		post := Post{URL: strings.TrimSuffix(file.Name(), ".md"), Name: polishName(file.Name()), Date: fi.ModTime().Format("2006-01-02 15:04:05"), Path: fmt.Sprintf("./static/posts/%s", file.Name()), ArticleContent: template.HTML(buf.String())}
+		posts[post.URL] = post
 	}
 }
 

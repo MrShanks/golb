@@ -3,8 +3,11 @@ package main
 import "html/template"
 
 type Post struct {
-	Name string
-	Date string
+	URL            string
+	Name           string
+	Date           string
+	Path           string
+	ArticleContent template.HTML
 }
 
 type ArticleData struct {

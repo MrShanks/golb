@@ -22,25 +22,12 @@
     <a href="/contacts">CONTACTS</a>
   </div>
 
-  <header>
-    <h1>GO NUTS!</h1>
-
-    <p>
-      Welcome to go nuts, hope you can find something interesting to read
-      today. No AI BS guaranteed!
-    </p>
-  </header>
-
   <hr />
   <div class="content">
-    <table class="post-table">
-      {{ range $index, $post := . }}
-      <tr>
-        <td class="index">{{ printf "%03d" $index }}:</td>
-        <td class="title"><a href="post/{{ $post.URL }}">{{ $post.Name }}</a></td>
-      </tr>
-      {{ end }}
-    </table>
+    <p class="date">{{ .Date }}</p>
+    <div class="post">{{ .ArticleContent }}</div>
+
+    <button id="btn">Next</button>
   </div>
   <script src="/static/app.js"></script>
 </body>
