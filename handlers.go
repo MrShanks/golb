@@ -1,11 +1,8 @@
 package main
 
 import (
-	"bytes"
-	"html/template"
 	"log"
 	"net/http"
-	"os"
 	"sort"
 )
 
@@ -15,33 +12,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	mdContent, err := os.ReadFile(homePageArticle)
-	if err != nil {
-		http.Error(w, "Could not load article", http.StatusInternalServerError)
-		log.Printf("Could not load article: %v", err)
-		return
-	}
-
-	fileInfo, err := os.Stat(homePageArticle)
-	if err != nil {
-		http.Error(w, "Error reading file's stats", http.StatusInternalServerError)
-		log.Printf("Could not read file stats: %v", err)
-		return
-	}
-
-	var buf bytes.Buffer
-	if err := md.Convert(mdContent, &buf); err != nil {
-		http.Error(w, "Could not parse markdown", http.StatusInternalServerError)
-		log.Printf("Could not parse markdown: %v", err)
-		return
-	}
-
-	data := ArticleData{
-		ArticleContent: template.HTML(buf.String()),
-		Date:           fileInfo.ModTime().Format("2006-01-02 15:04:05"),
-	}
-
-	if err := tpl.ExecuteTemplate(w, "home.html", data); err != nil {
+	if err := tpl.ExecuteTemplate(w, "home.html", posts["how_to_approach_a_programming_project"]); err != nil {
 		http.Error(w, "Could not execute home template", http.StatusInternalServerError)
 		return
 	}

@@ -34,7 +34,15 @@ func loadPosts() {
 			log.Printf("Could not parse markdown: %v", err)
 			return
 		}
-		post := Post{URL: strings.TrimSuffix(file.Name(), ".md"), Name: polishName(file.Name()), Date: fi.ModTime().Format("2006-01-02 15:04:05"), Path: fmt.Sprintf("./static/posts/%s", file.Name()), ArticleContent: template.HTML(buf.String())}
+
+		post := Post{
+			URL:            strings.TrimSuffix(file.Name(), ".md"),
+			Name:           polishName(file.Name()),
+			Date:           fi.ModTime().Format("2006-01-02 15:04:05"),
+			Path:           fmt.Sprintf("./static/posts/%s", file.Name()),
+			ArticleContent: template.HTML(buf.String()),
+		}
+
 		posts[post.URL] = post
 	}
 }

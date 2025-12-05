@@ -10,7 +10,6 @@ import (
 	"github.com/yuin/goldmark-highlighting/v2"
 )
 
-var homePageArticle = "./static/posts/how_to_approach_a_programming_project.md"
 var tpl = template.Must(template.ParseGlob("templates/*.html"))
 var posts = make(map[string]Post)
 var md = goldmark.New(
